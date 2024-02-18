@@ -49,9 +49,13 @@ function validation() {
       }
       if (count == usersArray.length) {
         usersArray.push(users);
+        document.querySelector("#success").innerHTML = `${users.Name} You Have Successfully Registered.`;
       }
     } else {
       usersArray.push(users);
+      document.querySelector(
+        "#success"
+      ).innerHTML = `${users.Name} You Have Successfully Registered.`;
     }
     document.querySelector("#form").reset();
   } catch (error) {
@@ -63,6 +67,8 @@ function validation() {
 
 btn = document.querySelector(".b");
 btn.addEventListener("click", () => {
+  if (usersArray.length != 0) {
+    
   try {
     let html = `<table class='table table-success table-striped'>`;
     html += `<tr>`;
@@ -105,8 +111,8 @@ btn.addEventListener("click", () => {
       html += `</td>`;
       html += `<td>${user.Password}`;
       html += `</td>`;
-      html += `<td> <button id=${usersArray[r].Name} onclick='deleteRow(this.id)'>delete</button><br>
-    <button id=${usersArray[r].Name} onclick='editRow(this.id)'>Edit</button>`;
+      html += `<td> <button id=${usersArray[r].Name} class='delete-button' onclick='deleteRow(this.id)'>delete</button><br>
+    <button id=${usersArray[r].Name} class='edit-button' onclick='editRow(this.id)'>Edit</button>`;
       html += `</td>`;
       html += `</tr>`;
     }
@@ -117,6 +123,9 @@ btn.addEventListener("click", () => {
     document.querySelector(".table").innerHTML = html;
   } catch (error) {
     console.log(error);
+  }
+  } else {
+    document.querySelector(".table").innerHTML=`<h5 class='record' style="text-align:left;color:yellow;">No record available</h5>`
   }
 });
 
