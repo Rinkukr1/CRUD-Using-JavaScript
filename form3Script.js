@@ -49,7 +49,9 @@ function validation() {
       }
       if (count == usersArray.length) {
         usersArray.push(users);
-        document.querySelector("#success").innerHTML = `${users.Name} You Have Successfully Registered.`;
+        document.querySelector(
+          "#success"
+        ).innerHTML = `${users.Name} You Have Successfully Registered.`;
       }
     } else {
       usersArray.push(users);
@@ -68,64 +70,65 @@ function validation() {
 btn = document.querySelector(".b");
 btn.addEventListener("click", () => {
   if (usersArray.length != 0) {
-    
-  try {
-    let html = `<table class='table table-success table-striped'>`;
-    html += `<tr>`;
-    html += `<th> Name`;
-    html += `</th>`;
-    html += `<th> Email`;
-    html += `</th>`;
-    html += `<th> Address`;
-    html += `</th>`;
-    html += `<th> State`;
-    html += `</th>`;
-    html += `<th> Gender`;
-    html += `</th>`;
-    html += `<th>  Profile`;
-    html += `</th>`;
-    html += `<th> Selected Files`;
-    html += "</th>";
-    html += `<th> Password`;
-    html += `</th>`;
-    html += `<th> Edit`;
-    html += `</th>`;
-    html += `</tr>`;
-    for (let r = 0; r < usersArray.length; r++) {
-      html += `<tr class=${usersArray[r].Name}>`;
-
-      let user = usersArray[r];
-      html += `<td>${user.Name}`;
-      html += `</td>`;
-      html += `<td>${user.Email}`;
-      html += `</td>`;
-      html += `<td>${user.Address}`;
-      html += `</td>`;
-      html += `<td>${user.State}`;
-      html += `</td>`;
-      html += `<td>${user.Gender}`;
-      html += `</td>`;
-      html += `<td><img src=${user.Url}>`;
-      html += `</td>`;
-      html += `<td>${user.FileNames}`;
-      html += `</td>`;
-      html += `<td>${user.Password}`;
-      html += `</td>`;
-      html += `<td> <button id=${usersArray[r].Name} class='delete-button' onclick='deleteRow(this.id)'>delete</button><br>
-    <button id=${usersArray[r].Name} class='edit-button' onclick='editRow(this.id)'>Edit</button>`;
-      html += `</td>`;
+    try {
+      let html = `<table class='table table-success table-striped'>`;
+      html += `<tr>`;
+      html += `<th> Name`;
+      html += `</th>`;
+      html += `<th> Email`;
+      html += `</th>`;
+      html += `<th> Address`;
+      html += `</th>`;
+      html += `<th> State`;
+      html += `</th>`;
+      html += `<th> Gender`;
+      html += `</th>`;
+      html += `<th>  Profile`;
+      html += `</th>`;
+      html += `<th> Selected Files`;
+      html += "</th>";
+      html += `<th> Password`;
+      html += `</th>`;
+      html += `<th> Edit`;
+      html += `</th>`;
       html += `</tr>`;
-    }
-    html += "</table>";
-    document.querySelector(".container-fluid").style.width = "fit-content";
-    document.querySelector(".container-fluid").style.height = "fit-content";
+      for (let r = 0; r < usersArray.length; r++) {
+        html += `<tr class=${usersArray[r].Name}>`;
 
-    document.querySelector(".table").innerHTML = html;
-  } catch (error) {
-    console.log(error);
-  }
+        let user = usersArray[r];
+        html += `<td>${user.Name}`;
+        html += `</td>`;
+        html += `<td>${user.Email}`;
+        html += `</td>`;
+        html += `<td>${user.Address}`;
+        html += `</td>`;
+        html += `<td>${user.State}`;
+        html += `</td>`;
+        html += `<td>${user.Gender}`;
+        html += `</td>`;
+        html += `<td><img src=${user.Url}>`;
+        html += `</td>`;
+        html += `<td>${user.FileNames}`;
+        html += `</td>`;
+        html += `<td>${user.Password}`;
+        html += `</td>`;
+        html += `<td> <button id=${usersArray[r].Name} class='delete-button' onclick='deleteRow(this.id)'>delete</button><br>
+    <button id=${usersArray[r].Name} class='edit-button' onclick='editRow(this.id)'>Edit</button>`;
+        html += `</td>`;
+        html += `</tr>`;
+      }
+      html += "</table>";
+      document.querySelector(".container-fluid").style.width = "fit-content";
+      document.querySelector(".container-fluid").style.height = "fit-content";
+
+      document.querySelector(".table").innerHTML = html;
+    } catch (error) {
+      console.log(error);
+    }
   } else {
-    document.querySelector(".table").innerHTML=`<h5 class='record' style="text-align:left;color:yellow;">No record available</h5>`
+    document.querySelector(
+      ".table"
+    ).innerHTML = `<h5 class='record' style="text-align:left;color:yellow;">No record available</h5>`;
   }
 });
 
@@ -290,3 +293,98 @@ function editUser(userId) {
   }
   return false;
 }
+let city = document.querySelector("#ad");
+let sta = document.querySelector("#st");
+let rajasthanDistricts = [
+  "Ajmer",
+  "Alwar",
+  "Banswara",
+  "Baran",
+  "Barmer",
+  "Bharatpur",
+  "Bhilwara",
+  "Bikaner",
+  "Bundi",
+  "Chittorgarh",
+  "Churu",
+  "Dausa",
+  "Dholpur",
+  "Dungarpur",
+  "Hanumangarh",
+  "Jaipur",
+  "Jaisalmer",
+  "Jalore",
+  "Jhalawar",
+  "Jhunjhunu",
+  "Jodhpur",
+  "Karauli",
+  "Kota",
+  "Nagaur",
+  "Pali",
+  "Pratapgarh",
+  "Rajsamand",
+  "Sawai Madhopur",
+  "Sikar",
+  "Sirohi",
+  "Sri Ganganagar",
+  "Tonk",
+  "Udaipur",
+];
+const uttarakhandDistricts = [
+  "Almora",
+  "Bageshwar",
+  "Chamoli",
+  "Champawat",
+  "Dehradun",
+  "Haridwar",
+  "Nainital",
+  "Pauri Garhwal",
+  "Pithoragarh",
+  "Rudraprayag",
+  "Tehri Garhwal",
+  "Udham Singh Nagar",
+  "Uttarkashi",
+];
+const andhraPradeshDistricts = [
+  "Anantapur",
+  "Chittoor",
+  "East Godavari",
+  "Guntur",
+  "Kadapa",
+  "Krishna",
+  "Kurnool",
+  "Nellore",
+  "Prakasam",
+  "Srikakulam",
+  "Visakhapatnam",
+  "Vizianagaram",
+  "West Godavari",
+];
+sta.addEventListener("click", () => {
+  console.log(sta.value);
+  let html = `<option>Choose City</option>`;
+  if (sta.value == "Andhra Pradesh") {
+    for (let i = 0; i < andhraPradeshDistricts.length; i++) {
+      html =
+        html +
+        `<option value='${andhraPradeshDistricts[i]}'>${andhraPradeshDistricts[i]}</option><br>`;
+    }
+    city.innerHTML = html;
+  } else if (sta.value == "Uttarakhand") {
+    for (let i = 0; i < uttarakhandDistricts.length; i++) {
+      html =
+        html +
+        `<option value='${uttarakhandDistricts[i]}'>${uttarakhandDistricts[i]}</option><br>`;
+    }
+    city.innerHTML = html;
+  } else if (sta.value == "Rajasthan") {
+    for (let i = 0; i < rajasthanDistricts.length; i++) {
+      html =
+        html +
+        `<option value='${rajasthanDistricts[i]}'>${rajasthanDistricts[i]}</option><br>`;
+    }
+    city.innerHTML = html;
+  } else {
+    city.innerHTML = html;
+  }
+});
